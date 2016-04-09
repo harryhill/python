@@ -21,20 +21,7 @@ df.columns = ["kpi","s1","s2","s3"]#変数名は結合時に反映されない�
 print(df[["s1"]].as_matrix()) #重回帰分析(xは多変量)のため、説明変数は[[ ]]で取り出す必要あり
 print(df["kpi"].as_matrix()) #被説明変数はdfそのまま取り出して平気
 
-def singlelm(df):
-	clf = linear_model.LinearRegression(copy_X=True, fit_intercept=True, n_jobs=1, normalize=False)
-	summary = [clf.fit(df[[i]].as_matrix(), df["kpi"].as_matrix()) for i in list(df.columns.values)[1:]]#右が被説明変数
-
-	for j in summary:
-		print("変数{0}の回帰分析結果".format(j))
-		print("回帰係数：{0}".format(float(clf.coef_)))
-		print("切片項：{0}".format(clf.intercept_))
-		#r2 = clf.score(df[[j]].as_matrix(), df["kpi"].as_matrix())
-		#print("決定係数R^2：{0}".format(r2))
-		print( )
-		#R-squareの別途計算にclf.score内の引数を再度正確に指定しないと決定係数-6.0とか出るので要注意
-
-singlelm(df)
+print(df)
 
 
 
